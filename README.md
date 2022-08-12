@@ -51,8 +51,6 @@ python show_hands_coords.py <path of the video> <path of the coordinates file> [
 ## Requirements 
 
 In order to use this github, you need to clone and install the following github repositories in a conda environment:
-
-You need to clone the [mmpose github repo](https://github.com/open-mmlab/mmpose) and the [mmdetection github repo](https://github.com/open-mmlab/mmdetection) and perform the installation process on each of them:
 - [install instructions for mmpose](https://github.com/open-mmlab/mmpose/blob/master/docs/en/install.md)
 - [install instructions for mmdetection](https://github.com/open-mmlab/mmdetection/blob/master/docs/en/get_started.md)
 
