@@ -24,11 +24,6 @@ keypoints_mapping = [
   'little1',
 ]
 
-def combine_results(boxes, poses):
-  for i in range(len(boxes)):
-    poses[i]['bbox'] = boxes[i]['bbox']
-  return poses
-
 def coords_to_hands(coords_list, frame_x_length):
 
   coords_hands_video = list()

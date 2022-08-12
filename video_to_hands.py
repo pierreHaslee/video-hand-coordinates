@@ -6,7 +6,7 @@ from argparse import ArgumentParser
 import cv2
 import mmcv
 import pickle
-from data_utils import combine_results, coords_to_hands
+from data_utils import coords_to_hands
 
 from mmpose.apis import (collect_multi_frames, inference_top_down_pose_model,
                          init_pose_model, process_mmdet_results,
@@ -185,7 +185,7 @@ def main():
                 return_heatmap=return_heatmap,
                 outputs=output_layer_names)
 
-            result_list.append(combine_results(person_results, pose_results))
+            result_list.append(pose_results)
 
             # show the results
             vis_frame = vis_pose_result(
