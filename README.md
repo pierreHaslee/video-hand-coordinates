@@ -17,8 +17,14 @@ python video_to_hands.py\
 <path to mmpose git folder>/demo/mmdetection_cfg/cascade_rcnn_x101_64x4d_fpn_1class.py cascade_rcnn_x101_64x4d_fpn_20e_onehand10k-dac19597_20201030.pth\
 <path to mmpose git folder>/configs/hand/2d_kpt_sview_rgb_img/deeppose/onehand10k/res50_onehand10k_256x256.py deeppose_res50_onehand10k_256x256-cbddf43a_20210330.pth\
 --video-root <folder path of input videos> --out-video-root [folder path of outputed annotated videos]\
-[--device <cpu/gpu>] [--show] --savepath <folder path of the outputed coordinates>
+--savepath <folder path of the outputed coordinates> [--device <cpu/gpu>] [--show] 
 ```
+
+notes: 
+
+- `--show` will open an OpenCV window showing the model's inferences in real-time
+- if `--device` is not specified, it will run on gpu
+
 
 ### Input format
 
@@ -38,7 +44,7 @@ This is its structure:
     The values for 'keypoints' is a list of the hand keypoints, and the value for 'bbox' contains the detection bounding box for the hand and its inference confidence.
   
   *i.e.*
-  `pickle_list[2649]['left'][12] is the 12th keypoint of the left hand visible on the 2649th frame`
+  `pickle_list[2649]['left']['keypoints'][12] is the 12th keypoint of the left hand visible on the 2649th frame`
 
 ## Showing coordinates on videos
 
