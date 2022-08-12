@@ -24,6 +24,11 @@ keypoints_mapping = [
   'little1',
 ]
 
+def combine_results(boxes, poses):
+  for i in range(len(boxes)):
+    poses[i]['bbox'] = boxes[i]['bbox']
+  return poses
+
 def coords_to_hands(coords_list, frame_x_length):
 
   coords_hands_video = list()
@@ -48,14 +53,14 @@ def get_coords_hands(coords_frame, frame_x_width):
   if len(barycentres) > 0:
     if len(barycentres) == 1:
       if barycentres[0] < frame_x_width/2:
-        coords_hands['left'] = coords_frame[0]['keypoints']
+        coords_hands['left'] = coords_frame[0]
       else:
-        coords_hands['right'] = coords_frame[0]['keypoints']
+        coords_hands['right'] = coords_frame[0]
     else:
       id_left = barycentres.index(min(barycentres))
-      coords_hands['left'] = coords_frame[id_left]['keypoints']
+      coords_hands['left'] = coords_frame[id_left]
       id_right = barycentres.index(max(barycentres))
-      coords_hands['right'] = coords_frame[id_right]['keypoints']
+      coords_hands['right'] = coords_frame[id_right]
   
   return coords_hands
 

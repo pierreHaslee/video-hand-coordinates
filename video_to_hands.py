@@ -6,7 +6,7 @@ from argparse import ArgumentParser
 import cv2
 import mmcv
 import pickle
-from data_utils import coords_to_hands
+from data_utils import combine_results, coords_to_hands
 
 from mmpose.apis import (collect_multi_frames, inference_top_down_pose_model,
                          init_pose_model, process_mmdet_results,
@@ -89,7 +89,6 @@ def main():
 
     args = parser.parse_args()
 
-    assert args.show or (args.out_video_root != '')
     assert args.det_config is not None
     assert args.det_checkpoint is not None
 
@@ -167,6 +166,9 @@ def main():
             # keep the person class bounding boxes.
             person_results = process_mmdet_results(mmdet_results, args.det_cat_id)
 
+            for person in person_results:
+                print(person['bbox'])
+
             if args.use_multi_frames:
                 frames = collect_multi_frames(video, frame_id, indices,
                                             args.online)
@@ -183,7 +185,7 @@ def main():
                 return_heatmap=return_heatmap,
                 outputs=output_layer_names)
 
-            result_list.append(pose_results)
+            result_list.append(combine_results(person_results, pose_results))
 
             # show the results
             vis_frame = vis_pose_result(

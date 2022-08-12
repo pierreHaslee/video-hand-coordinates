@@ -81,7 +81,8 @@ def main():
     save_vid = False
 
   with open(args.coordspath,'rb') as f:
-    coords_hands = pickle.load(f)
+    coords_hands_dict = pickle.load(f)
+    coords_hands = list(map(lambda x: {k: v['keypoints'] for k,v in x.items()}, coords_hands_dict))
 
   speeds = deriv_hands(coords_hands, 60)
   accels = deriv_hands(speeds, 1)
