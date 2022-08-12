@@ -60,6 +60,8 @@ You need to clone the [mmpose github repo](https://github.com/open-mmlab/mmpose)
 All of the installation steps above (including git clonings) can be performed by the `install_for_you.sh` bash script provided in this github.
 > Be sure that you have *conda* installed, that you don't already have a *conda environment* named 'openmmlab', and that you run this script at the root of this github repository.
 
-You will also need to download two weight files to be loaded in the machine learning models (you can put them in the 'weights' folder):
+You will also need to download two weight files to be loaded in the machine learning models (you can put them in a 'weights' folder):
   - [deeppose_res50_onehand10k_256x256-cbddf43a_20210330.pth](https://download.openmmlab.com/mmpose/hand/deeppose/deeppose_res50_onehand10k_256x256-cbddf43a_20210330.pth) for the hand pose model
   - [cascade_rcnn_x101_64x4d_fpn_20e_onehand10k-dac19597_20201030.pth](https://download.openmmlab.com/mmpose/mmdet_pretrained/cascade_rcnn_x101_64x4d_fpn_20e_onehand10k-dac19597_20201030.pth) for the hand detection model
+
+**optional:** create these folders *weights* *video* *output*, to store respectively the weights downloaded above, your videos, and your outputted pickle files.
